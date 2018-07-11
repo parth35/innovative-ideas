@@ -12,9 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
-Route::get('/admin/dashboard','AdminDashboardController@dashboard');
+/* Start: Admin Routes */
+Route::group(['prefix'=>'/admin'], function(){
 
-Route::get('/admin/users','AdminUserController@users');
+	Route::get('/dashboard','AdminDashboardController@dashboard');
+	
+	/* Start: User Module Routes */
+	Route::group(['prefix'=>'/users'], function(){
+		Route::get('/','AdminUserController@users');
+		Route::get('/add','AdminUserController@add');
+		Route::get('/edit/{id}','AdminUserController@edit');
+		Route::post('/adduser','AdminUserController@saveuser');
+	});
+	/* End: User Module Routes */
+});
+/* End: Admin Routes */
