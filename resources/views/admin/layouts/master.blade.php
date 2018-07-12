@@ -8,11 +8,7 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
 	<link rel="stylesheet" href="{{ css_url('/bootstrap.min.css') }}">
-	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{ base_url('/font-awesome/css/font-awesome.min.css') }}">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="{{ base_url('/Ionicons/css/ionicons.min.css') }}">
-	<!-- Theme style -->
 	<link rel="stylesheet" href="{{ css_url('/style.css') }}">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
@@ -28,7 +24,6 @@
 
 	@include('admin.layouts.header')
 	@include('admin.layouts.sidebar')
-	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
 		@yield('content')
 	</div>
@@ -38,16 +33,108 @@
 	<script src="{{ js_url('/jquery.min.js') }}"></script>
 	<!-- jQuery UI 1.11.4 -->
 	<script src="{{ js_url('/jquery-ui.min.js') }}"></script>
-	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-	<script>
-	$.widget.bridge('uibutton', $.ui.button);
-	</script>
 	<!-- Bootstrap 3.3.7 -->
 	<script src="{{ js_url('/bootstrap.min.js') }}"></script>
-	<!-- AdminLTE App -->
-	<script src="{{ js_url('/adminlte.min.js') }}"></script>
+	<script src="{{ js_url('/admin.js') }}"></script>
 
 	@stack('scripts')
+	<script>
+		/* Start: Select all check box for list view */
+		$('#select_all').click(function(event) {
+			if (this.checked) {
+				$(':checkbox').prop('checked', true);
+			} else {
+				$(':checkbox').prop('checked', false);
+			}
+		});
+		/* End: Select all check box for list view */
 
+		/* Start: Active all button action */
+		function active_all(url)
+		{
+			if($('.data_checkbox').is(":checked"))
+			{
+				var allObj = {'_token':"{{ csrf_token() }}"};
+				allObj.datachecked = [];
+				$('.data_checkbox:checked').each(function(){
+					var id = $(this).attr('id');
+					allObj.datachecked.push(id);
+				})
+				allObj.datachecked.push();
+				$.ajax({
+					type: "post",
+					url: url,
+					data: allObj,
+					success: function(html)
+					{
+						window.location.href='';
+					}
+				});
+			}
+			else
+			{
+				alert("Please check at least one checkbox.");
+			}
+		}
+		/* End: Active all button action */
+
+		/* Start: Inactive all button action */
+		function inactive_all(url)
+		{
+			if($('.data_checkbox').is(":checked"))
+			{
+				var allObj = {'_token':"{{ csrf_token() }}"};
+				allObj.datachecked = [];
+				$('.data_checkbox:checked').each(function(){
+					var id = $(this).attr('id');
+					allObj.datachecked.push(id);
+				})
+				allObj.datachecked.push();
+				$.ajax({
+					type: "post",
+					url: url,
+					data: allObj,
+					success: function(html)
+					{
+						window.location.href='';
+					}
+				});
+			}
+			else
+			{
+				alert("Please check at least one checkbox.");
+			}
+		}
+		/* End: Inactive all button action */
+
+		/* Start: Delete all button action */
+		function delete_all(url)
+		{
+			if($('.data_checkbox').is(":checked"))
+			{
+				var allObj = {'_token':"{{ csrf_token() }}"};
+				allObj.datachecked = [];
+				$('.data_checkbox:checked').each(function(){
+					var id = $(this).attr('id');
+					allObj.datachecked.push(id);
+				})
+				allObj.datachecked.push();
+				$.ajax({
+					type: "post",
+					url: url,
+					data: allObj,
+					success: function(html)
+					{
+						window.location.href='';
+					}
+				});
+			}
+			else
+			{
+				alert("Please check at least one checkbox.");
+			}
+		}
+		/* End: Delete all button action */
+	</script>
 </body>
 </html>
