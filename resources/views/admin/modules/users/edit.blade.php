@@ -93,6 +93,8 @@
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 	<script>
 		$("#user_form").validate({
+			errorClass: 'help-block',
+			errorElement: 'span',
 			rules: {
 				first_name: { required: true },
 				last_name: { required: true },
@@ -106,6 +108,13 @@
 				username: { required: "The username field is required." },
 				email: { required: "The email field is required.", email: "Please enter a valid email." },
 				password: { required: "The password field is required." },
+			},
+			errorPlacement: function(error, element) {
+				error.insertAfter($(element));
+				$(element).parents('div').parents('div').addClass('has-error');
+			},
+			unhighlight: function(element, errorClass, validClass){
+				$(element).parents('div').parents('div').removeClass('has-error');
 			}
 		});
 	</script>
