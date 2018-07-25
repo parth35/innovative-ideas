@@ -18,6 +18,13 @@ Route::get('/', function () {
 /* Start: Admin Routes */
 Route::group(['prefix'=>'/admin'], function(){
 
+	/* Start: Auth Routes */
+	Route::group(['prefix'=>'/login'], function(){
+		Route::get('/', 'AuthController@login');
+		Route::get('/doLogin', 'AuthController@doLogin');
+	});
+	/* End: Auth Routes */
+
 	Route::get('/dashboard','AdminDashboardController@dashboard');
 	
 	/* Start: User Module Routes */
