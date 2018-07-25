@@ -5,10 +5,10 @@
 			<!-- Sidebar user panel -->
 			<div class="user-panel">
 				<div class="pull-left image">
-					<img src="{{ base_url('/image/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+					<img src="{{ user_profile_image_url(Auth::user()->profile_image) }}" class="img-circle" alt="User Image">
 				</div>
 				<div class="pull-left info">
-					<p>Alexander Pierce</p>
+					<p>{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</p>
 				</div>
 			</div>
 			<!-- sidebar menu: : style can be found in sidebar.less -->

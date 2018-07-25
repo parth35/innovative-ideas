@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * This function is used for listing all users.
      *
@@ -57,7 +62,7 @@ class AdminUserController extends Controller
      * @version 1.0.0
      * @return view 'admin.modules.users.edit'
      */
-    public function saveuser(request $r)
+    public function saveuser(Request $r)
     {
         $input = $r->all();
         $validatedData = $r->validate([

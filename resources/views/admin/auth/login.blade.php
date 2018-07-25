@@ -19,19 +19,24 @@
 		<div class="login-logo">
 			<a href="../../index2.html"><b>Innovative</b>IDEAS</a>
 		</div>
-		<!-- /.login-logo -->
 		<div class="login-box-body">
 			<p class="login-box-msg">Sign in to start your session</p>
 
 			<form name="login_form" id="login_form" method="POST" action="{{ action('AuthController@doLogin') }}">
 				@csrf
-				<div class="form-group has-feedback">
+				<div class="form-group has-feedback @if($errors->has('email')){{'has-error'}}@endif">
 					<input name="email" id="email" type="email" class="form-control" placeholder="Email" />
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+					@if ($errors->has('email'))
+						<span class="help-block">{{ $errors->first('email') }}</span>
+					@endif
 				</div>
-				<div class="form-group has-feedback">
+				<div class="form-group has-feedback @if($errors->has('password')){{'has-error'}}@endif">
 					<input name="password" id="password" type="password" class="form-control" placeholder="Password" />
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+					@if ($errors->has('password'))
+						<span class="help-block">{{ $errors->first('password') }}</span>
+					@endif
 				</div>
 				<div class="row">
 					<div class="col-xs-8">
@@ -49,12 +54,13 @@
 
 			<div class="social-auth-links text-center">
 				<p>- OR -</p>
-				<a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-					Facebook</a>
-				<a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-					Google+</a>
+				<a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+					<i class="fa fa-facebook"></i> Sign in using Facebook
+				</a>
+				<a href="#" class="btn btn-block btn-social btn-google btn-flat">
+					<i class="fa fa-google-plus"></i> Sign in using Google+
+				</a>
 			</div>
-			<!-- /.social-auth-links -->
 
 			<a href="#">I forgot my password</a><br>
 			<a href="register.html" class="text-center">Register a new membership</a>
@@ -65,6 +71,7 @@
 	<script src="{{ js_url('/jquery.min.js') }}"></script>
 	<script src="{{ js_url('/bootstrap.min.js') }}"></script>
 	<script src="{{ base_url('/iCheck/icheck.min.js') }}"></script>
+	<script src="{{ js_url('/jquery-validate.min.js') }}"></script>
 	<script>
 		$(function () {
 			$('input').iCheck({
@@ -72,6 +79,26 @@
 				radioClass: 'iradio_square-blue',
 				increaseArea: '20%' /* optional */
 			});
+		});
+
+		$("#login_form").validate({
+			errorClass: 'help-block',
+			errorElement: 'span',
+			rules: {
+				email: { required: true, email: true },
+				password: { required: true },
+			},
+			messages: {
+				email: { required: "The email field is required.", email: "Please enter valid email address." },
+				password: { required: "The password field is required." },
+			},
+			errorPlacement: function(error, element) {
+				error.insertAfter($(element));
+				$(element).parents('div').addClass('has-error');
+			},
+			unhighlight: function(element, errorClass, validClass){
+				$(element).parents('div').removeClass('has-error');
+			}
 		});
 	</script>
 </body>

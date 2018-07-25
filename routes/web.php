@@ -21,8 +21,9 @@ Route::group(['prefix'=>'/admin'], function(){
 	/* Start: Auth Routes */
 	Route::group(['prefix'=>'/login'], function(){
 		Route::get('/', 'AuthController@login');
-		Route::get('/doLogin', 'AuthController@doLogin');
+		Route::post('/doLogin', 'AuthController@doLogin');
 	});
+	Route::get('/logout', 'AuthController@logout');
 	/* End: Auth Routes */
 
 	Route::get('/dashboard','AdminDashboardController@dashboard');

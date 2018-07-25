@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -27,8 +27,39 @@ class AuthController extends Controller
 	 * @author Parth
 	 * @return redirect 'dashboard'
 	 */
-    public function doLogin(request $r)
+    public function doLogin(Request $r)
     {
-        $data = $r->all();
+        $input = $r->all();
+        $validatedData = $r->validate([
+            'email'         => 'required|email',
+            'password'      => 'required'
+        ]);
+
+        $userdata = array(
+            'email'     => $input['email'],
+            'password'  => $input['password']
+        );
+
+        if (Auth::attempt($userdata)) {
+            $message = 'Login successfully.';
+            return redirect('/admin/dashboard')->with('success', $message);
+        } else {
+            $message = 'Login failed.';
+            return redirect('/admin/login')->with('error', $message);
+        }
+    }
+
+    /**
+	 * This function is used for logout process.
+     * 
+     * @param request $r
+	 * @version 1.0.0
+	 * @author Parth
+	 * @return redirect 'login'
+	 */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/admin/login');
     }
 }
