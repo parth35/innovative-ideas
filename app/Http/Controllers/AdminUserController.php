@@ -88,9 +88,11 @@ class AdminUserController extends Controller
 
         if(isset($input['id']) && !empty($input['id']))
         {
+            $message = 'User updated successfully.';
             $user = \App\User::where('id',$input['id'])->first();
         }
         else{
+            $message = 'User added successfully.';
             $user = new \App\User;
         }
         $user->first_name = $input['first_name'];
@@ -104,7 +106,7 @@ class AdminUserController extends Controller
         }
         $user->status = 'active';
         $user->save();
-        return redirect('/admin/users');
+        return redirect('/admin/users')->with('success', $message);;
     }
 
     /**

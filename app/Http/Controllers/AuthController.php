@@ -16,7 +16,15 @@ class AuthController extends Controller
     public function login()
     {
         $title = 'Innovative Ideas - Login';
-        return view('admin.auth.login',['title' => $title]);
+        if(Auth::check())
+        {
+            $message = 'You are already logged in.';
+            return redirect('/admin/dashboard')->with('warning', $message);
+        }
+        else
+        {
+            return view('admin.auth.login',['title' => $title]);
+        }
     }
 
     /**
@@ -34,13 +42,15 @@ class AuthController extends Controller
             'email'         => 'required|email',
             'password'      => 'required'
         ]);
-
-        $userdata = array(
-            'email'     => $input['email'],
-            'password'  => $input['password']
-        );
-
-        if (Auth::attempt($userdata)) {
+        
+        if(isset($input['remember_me']) && !empty($input['remember_me']))
+        {
+            $remember = true;
+        }
+        else{
+            $remember = false;
+        }
+        if (Auth::attempt(['email' => $input['email'], 'password' => $input['password']], $remember)) {
             $message = 'Login successfully.';
             return redirect('/admin/dashboard')->with('success', $message);
         } else {

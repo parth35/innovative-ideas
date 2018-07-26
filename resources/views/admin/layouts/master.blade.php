@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="{{ css_url('/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ base_url('/font-awesome/css/font-awesome.min.css') }}">
 	<link rel="stylesheet" href="{{ css_url('/style.css') }}">
+	<link rel="stylesheet" href="{{ css_url('/toastr-message.min.css') }}">
+	
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="{{ css_url('/skins/_all-skins.min.css') }}">
@@ -36,6 +38,7 @@
 	<!-- Bootstrap 3.3.7 -->
 	<script src="{{ js_url('/bootstrap.min.js') }}"></script>
 	<script src="{{ js_url('/admin.js') }}"></script>
+	<script src="{{ js_url('/toastr-message.min.js') }}"></script>
 
 	@stack('scripts')
 	<script>
@@ -135,6 +138,90 @@
 			}
 		}
 		/* End: Delete all button action */
+
+		function warning_message(message)
+        {
+            toastr.warning(message,{
+                timeOut: 10000,
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut",
+                "tapToDismiss": false
+            })
+        }
+
+        function success_message(message)
+        {
+            toastr.success(message,{
+                timeOut: 10000,
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut",
+                "tapToDismiss": false
+            })
+		}
+
+		function error_message(message)
+        {
+            toastr.error(message,{
+                timeOut: 10000,
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut",
+                "tapToDismiss": false
+            })
+		}
+		
+		/* suuccess message initialization */
+		@if(session()->has('success'))
+			success_message("{{ session()->get('success') }}");
+		@endif
+		/* suuccess message initialization */
+
+		/* warning message initialization */
+		@if(session()->has('warning'))
+			warning_message("{{ session()->get('warning') }}");
+		@endif
+		/* warning message initialization */
+
+		/* error message initialization */
+		@if(session()->has('error'))
+			error_message("{{ session()->get('error') }}");
+		@endif
+		/* error message initialization */
 	</script>
 </body>
 </html>
