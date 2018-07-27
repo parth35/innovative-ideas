@@ -28,12 +28,54 @@ Route::group(['prefix'=>'/admin'], function(){
 
 	Route::get('/dashboard','AdminDashboardController@dashboard');
 	
+	/* Start: Countries Module Routes */
+	Route::group(['prefix'=>'/cities'], function(){
+		Route::get('/', 'AdminCitiesController@cities');
+		Route::get('/add', 'AdminCitiesController@add');
+		Route::get('/edit/{id}', 'AdminCitiesController@edit');
+		Route::post('/addUpdate', 'AdminCitiesController@savecity');
+		Route::get('/status/{id}', 'AdminCitiesController@status');
+		Route::get('/delete/{id}', 'AdminCitiesController@delete');
+		Route::post('/active_all', 'AdminCitiesController@active_all');
+		Route::post('/inactive_all', 'AdminCitiesController@inactive_all');
+		Route::post('/delete_all', 'AdminCitiesController@delete_all');
+	});
+	/* End: Countries Module Routes */
+	
+	/* Start: Countries Module Routes */
+	Route::group(['prefix'=>'/countries'], function(){
+		Route::get('/', 'AdminCountriesController@countries');
+		Route::get('/add', 'AdminCountriesController@add');
+		Route::get('/edit/{id}', 'AdminCountriesController@edit');
+		Route::post('/addUpdate', 'AdminCountriesController@savecountry');
+		Route::get('/status/{id}', 'AdminCountriesController@status');
+		Route::get('/delete/{id}', 'AdminCountriesController@delete');
+		Route::post('/active_all', 'AdminCountriesController@active_all');
+		Route::post('/inactive_all', 'AdminCountriesController@inactive_all');
+		Route::post('/delete_all', 'AdminCountriesController@delete_all');
+	});
+	/* End: Countries Module Routes */
+
+	/* Start: States Module Routes */
+	Route::group(['prefix'=>'/states'], function(){
+		Route::get('/', 'AdminStatesController@states');
+		Route::get('/add', 'AdminStatesController@add');
+		Route::get('/edit/{id}', 'AdminStatesController@edit');
+		Route::post('/addUpdate', 'AdminStatesController@savestate');
+		Route::get('/status/{id}', 'AdminStatesController@status');
+		Route::get('/delete/{id}', 'AdminStatesController@delete');
+		Route::post('/active_all', 'AdminStatesController@active_all');
+		Route::post('/inactive_all', 'AdminStatesController@inactive_all');
+		Route::post('/delete_all', 'AdminStatesController@delete_all');
+	});
+	/* End: States Module Routes */
+	
 	/* Start: Tags Module Routes */
 	Route::group(['prefix'=>'/tags'], function(){
 		Route::get('/', 'AdminTagsController@tags');
 		Route::get('/add', 'AdminTagsController@add');
 		Route::get('/edit/{id}', 'AdminTagsController@edit');
-		Route::post('/adduser', 'AdminTagsController@savetag');
+		Route::post('/addUpdate', 'AdminTagsController@savetag');
 		Route::get('/status/{id}', 'AdminTagsController@status');
 		Route::get('/delete/{id}', 'AdminTagsController@delete');
 		Route::post('/active_all', 'AdminTagsController@active_all');
@@ -47,7 +89,7 @@ Route::group(['prefix'=>'/admin'], function(){
 		Route::get('/', 'AdminUserController@users');
 		Route::get('/add', 'AdminUserController@add');
 		Route::get('/edit/{id}', 'AdminUserController@edit');
-		Route::post('/adduser', 'AdminUserController@saveuser');
+		Route::post('/addUpdate', 'AdminUserController@saveuser');
 		Route::get('/status/{id}', 'AdminUserController@status');
 		Route::get('/delete/{id}', 'AdminUserController@delete');
 		Route::post('/active_all', 'AdminUserController@active_all');

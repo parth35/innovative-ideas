@@ -13,6 +13,15 @@
 			</div>
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu" data-widget="tree">
+				<li class='{{ check_segment(2,'cities')?"active":'' }}'>
+					<a href="{{ admin_url('/cities') }}"><i class="fa fa-building"></i> <span>Cities</span></a>
+				</li>
+				<li class='{{ check_segment(2,'countries')?"active":'' }}'>
+					<a href="{{ admin_url('/countries') }}"><i class="fa fa-fw fa-map"></i> <span>Countries</span></a>
+				</li>
+				<li class='{{ check_segment(2,'states')?"active":'' }}'>
+					<a href="{{ admin_url('/states') }}"><i class="fa fa-flag"></i> <span>States</span></a>
+				</li>
 				<li class='{{ check_segment(2,'tags')?"active":'' }}'>
 					<a href="{{ admin_url('/tags') }}"><i class="fa fa-fw fa-tags"></i> <span>Tags</span></a>
 				</li>

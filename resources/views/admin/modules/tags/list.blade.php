@@ -8,7 +8,7 @@
 			<div class="col-xs-12">
 				<div class="box box-info">
             		<div class="box-header">
-						<a href="{{ base_url('/admin/tags/add') }}" class="btn btn-success">Add Tags</a>
+						<a href="{{ base_url('/admin/tags/add') }}" class="btn btn-success">Add Tag</a>
 						&nbsp;&nbsp;
 						<div class="btn-group">
 							<a href="javascrip:void(0)" onclick="active_all('{{ base_url('/admin/tags/active_all') }}')" id="active_all" class="btn btn-info">Active All</a>
