@@ -76,7 +76,7 @@
 			}
 			else
 			{
-				alert("Please check at least one checkbox.");
+				warning_message("Please check at least one checkbox.");
 			}
 		}
 		/* End: Active all button action */
@@ -105,7 +105,7 @@
 			}
 			else
 			{
-				alert("Please check at least one checkbox.");
+				warning_message("Please check at least one checkbox.");
 			}
 		}
 		/* End: Inactive all button action */
@@ -134,7 +134,7 @@
 			}
 			else
 			{
-				alert("Please check at least one checkbox.");
+				warning_message("Please check at least one checkbox.");
 			}
 		}
 		/* End: Delete all button action */

@@ -96,10 +96,10 @@
 			errorClass: 'help-block',
 			errorElement: 'span',
 			rules: {
-				first_name: { required: true },
-				last_name: { required: true },
-				username: { required: true },
-				email: { required: true, email: true },
+				first_name: { required: true, minlength:2, maxlength:100 },
+				last_name: { required: true, minlength:2, maxlength:100 },
+				username: { required: true, minlength:2, maxlength:100 },
+				email: { required: true, maxlength:150, email: true },
 				password: { required: true }
 			},
 			messages: {

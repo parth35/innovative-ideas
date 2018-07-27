@@ -24,4 +24,9 @@ function change_status($status,$url)
 	}
 }
 
+function check_segment($order,$segment)
+{
+	return (Request::segment($order) == $segment) ? true : false;
+}
+
 ?>

@@ -28,6 +28,20 @@ Route::group(['prefix'=>'/admin'], function(){
 
 	Route::get('/dashboard','AdminDashboardController@dashboard');
 	
+	/* Start: Tags Module Routes */
+	Route::group(['prefix'=>'/tags'], function(){
+		Route::get('/', 'AdminTagsController@tags');
+		Route::get('/add', 'AdminTagsController@add');
+		Route::get('/edit/{id}', 'AdminTagsController@edit');
+		Route::post('/adduser', 'AdminTagsController@savetag');
+		Route::get('/status/{id}', 'AdminTagsController@status');
+		Route::get('/delete/{id}', 'AdminTagsController@delete');
+		Route::post('/active_all', 'AdminTagsController@active_all');
+		Route::post('/inactive_all', 'AdminTagsController@inactive_all');
+		Route::post('/delete_all', 'AdminTagsController@delete_all');
+	});
+	/* End: Tags Module Routes */
+
 	/* Start: User Module Routes */
 	Route::group(['prefix'=>'/users'], function(){
 		Route::get('/', 'AdminUserController@users');

@@ -13,7 +13,12 @@
 			</div>
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu" data-widget="tree">
-				<li><a href="{{ admin_url('/users') }}"><i class="fa fa-book"></i> <span>Users</span></a></li>
+				<li class='{{ check_segment(2,'tags')?"active":'' }}'>
+					<a href="{{ admin_url('/tags') }}"><i class="fa fa-fw fa-tags"></i> <span>Tags</span></a>
+				</li>
+				<li class='{{ check_segment(2,'users')?"active":'' }}'>
+					<a href="{{ admin_url('/users') }}"><i class="fa fa-users"></i> <span>Users</span></a>
+				</li>
 			</ul>
 		</section>
 		<!-- /.sidebar -->

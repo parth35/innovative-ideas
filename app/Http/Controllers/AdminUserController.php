@@ -65,14 +65,28 @@ class AdminUserController extends Controller
     public function saveuser(Request $r)
     {
         $input = $r->all();
-        $validatedData = $r->validate([
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'email'         => 'required|email',
-            'username'      => 'required',
-            'password'      => 'required',
-            'profile_image' => ($r->file('profile_image'))?'mimes:jpeg,png,jpg,gif,svg|max:2048':'',
-        ]);
+        if(isset($input['id']) && !empty($input['id']))
+        {
+            $validatedData = $r->validate([
+                'first_name'    => 'required|max:100',
+                'last_name'     => 'required|max:100',
+                'email'         => 'required|max:150|email|unique:users,id,'.$input['id'],
+                'username'      => 'required|max:100',
+                'password'      => 'required',
+                'profile_image' => ($r->file('profile_image'))?'mimes:jpeg,png,jpg,gif,svg|max:2048':'',
+            ]);
+        }
+        else
+        {
+            $validatedData = $r->validate([
+                'first_name'    => 'required|max:100',
+                'last_name'     => 'required|max:100',
+                'email'         => 'required|max:150|email|unique:users',
+                'username'      => 'required|max:100',
+                'password'      => 'required',
+                'profile_image' => ($r->file('profile_image'))?'mimes:jpeg,png,jpg,gif,svg|max:2048':'',
+            ]);
+        }
 
         if($r->file('profile_image'))
         {
@@ -207,7 +221,12 @@ class AdminUserController extends Controller
 		$input = $r->all();
 		foreach($input['datachecked'] as $user)
 		{
-			$user_status = \App\User::where('id',$user)->first();
+            $user_status = \App\User::where('id',$user)->first();
+            
+            if(\File::exists(base_path().'/public/image/user_profile_image/'.$user_status->profile_image)) {
+                \File::delete(base_path().'/public/image/user_profile_image/'.$user_status->profile_image);
+            }
+
 			$user_status->delete();
 		}
 		echo 'success';

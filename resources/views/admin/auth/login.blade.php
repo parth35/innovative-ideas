@@ -47,20 +47,20 @@
 						</div>
 					</div>
 					<div class="col-xs-4">
-						<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+						<button type="submit" class="btn btn-primary btn-block">Sign In</button>
 					</div>
 				</div>
 			</form>
 
-			<div class="social-auth-links text-center">
+			{{-- <div class="social-auth-links text-center">
 				<p>- OR -</p>
-				<a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
-					<i class="fa fa-facebook"></i> Sign in using Facebook
+				<a href="#" class="btn btn-block btn-social btn-facebook">
+					<i class="fa fa-facebook"></i> Sign in with Facebook
 				</a>
-				<a href="#" class="btn btn-block btn-social btn-google btn-flat">
+				<a href="#" class="btn btn-block btn-social btn-google">
 					<i class="fa fa-google-plus"></i> Sign in using Google+
 				</a>
-			</div>
+			</div> --}}
 
 			<a href="#">I forgot my password</a><br>
 			<a href="register.html" class="text-center">Register a new membership</a>
