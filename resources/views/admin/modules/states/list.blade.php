@@ -50,12 +50,12 @@
 @endsection
 @push('styles')
 	<link rel="stylesheet" href="{{ css_url('/dataTables.bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ css_url('/jquery.fancybox.min.css') }}">
+	<link rel="stylesheet" href="{{ css_url('/responsive.dataTables.min.css') }}">
 @endpush
 @push('scripts')
-	<script src="{{ js_url('/jquery.fancybox.min.js') }}"></script>
 	<script src="{{ js_url('/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ js_url('/dataTables.bootstrap.min.js') }}"></script>
+	<script src="{{ js_url('/dataTables.responsive.min.js') }}"></script>
 	<script>
 		/* Start: Datatable initialization */
 		$('#state_table').DataTable({
@@ -67,10 +67,6 @@
 			"order": [[ 1, "asc" ]]
 		});
 		/* End: Datatable initialization */
-
-		/* Start: Fancybox initialization for image viewer */
-		$("a.fancy_image").fancybox();
-		/* End: Fancybox initialization for image viewer */
 
 		function state_data()
 		{
