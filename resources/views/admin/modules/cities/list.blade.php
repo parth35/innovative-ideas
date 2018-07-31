@@ -67,6 +67,7 @@
 	<script>
 		/* Start: Datatable initialization */
 		$('#city_table').DataTable({
+			responsive: true,
 			"columnDefs": [
 				{ "targets": 0, "orderable": false },
 				{ "targets": 2, "orderable": false },

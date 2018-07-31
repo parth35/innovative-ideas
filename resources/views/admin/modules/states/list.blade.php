@@ -59,6 +59,7 @@
 	<script>
 		/* Start: Datatable initialization */
 		$('#state_table').DataTable({
+			responsive: true,
 			"columnDefs": [
 				{ "targets": 0, "orderable": false },
 				{ "targets": 2, "orderable": false },
