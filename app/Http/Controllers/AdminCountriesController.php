@@ -34,7 +34,7 @@ class AdminCountriesController extends Controller
      */
     public function add()
     {
-        $title = 'Add Countries';
+        $title = 'Add Country';
         return view('admin.modules.countries.edit',['title' => $title]);
     }
 
@@ -48,7 +48,7 @@ class AdminCountriesController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Edit Countries';
+        $title = 'Edit Country';
         $country = \App\Country::where('id',$id)->first();
         return view('admin.modules.countries.edit',['title' => $title, 'id' => $id, 'country' => $country]);
     }

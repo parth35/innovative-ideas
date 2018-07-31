@@ -37,7 +37,7 @@
 											<td>
 												{!! change_status($tag['status'],base_url('/admin/tags/status/'.$tag['id'])) !!}
 											</td>
-											<td><a href="{{ base_url('/admin/tags/edit/'.$tag['id']) }}"><i class="fa fa-fw fa-edit"></i></a>&nbsp;&nbsp;<a href="{{ base_url('/admin/tags/delete/'.$tag['id']) }}"><i class="fa fa-fw fa-remove"></i></a></td>
+											<td><a title='Edit' href="{{ base_url('/admin/tags/edit/'.$tag['id']) }}"><i class="fa fa-fw fa-edit"></i></a>&nbsp;&nbsp;<a title='Delete' href="{{ base_url('/admin/tags/delete/'.$tag['id']) }}"><i class="fa fa-fw fa-remove"></i></a></td>
 										</tr>
 									@endforeach
 								@endif

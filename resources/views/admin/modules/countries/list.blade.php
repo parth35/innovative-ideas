@@ -41,7 +41,7 @@
 											<td>
 												{!! change_status($country['status'],base_url('/admin/countries/status/'.$country['id'])) !!}
 											</td>
-											<td><a href="{{ base_url('/admin/countries/edit/'.$country['id']) }}"><i class="fa fa-fw fa-edit"></i></a>&nbsp;&nbsp;<a href="{{ base_url('/admin/countries/delete/'.$country['id']) }}"><i class="fa fa-fw fa-remove"></i></a></td>
+											<td><a title='Edit' href="{{ base_url('/admin/countries/edit/'.$country['id']) }}"><i class="fa fa-fw fa-edit"></i></a>&nbsp;&nbsp;<a title='Delete' href="{{ base_url('/admin/countries/delete/'.$country['id']) }}"><i class="fa fa-fw fa-remove"></i></a></td>
 										</tr>
 									@endforeach
 								@endif

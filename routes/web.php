@@ -31,6 +31,8 @@ Route::group(['prefix'=>'/admin'], function(){
 	/* Start: Countries Module Routes */
 	Route::group(['prefix'=>'/cities'], function(){
 		Route::get('/', 'AdminCitiesController@cities');
+		Route::post('/get_data', 'AdminCitiesController@get_data');
+		Route::post('/get_city_data', 'AdminCitiesController@get_city_data');
 		Route::get('/add', 'AdminCitiesController@add');
 		Route::get('/edit/{id}', 'AdminCitiesController@edit');
 		Route::post('/addUpdate', 'AdminCitiesController@savecity');
@@ -56,9 +58,16 @@ Route::group(['prefix'=>'/admin'], function(){
 	});
 	/* End: Countries Module Routes */
 
+	/* Start: Countries Module Routes */
+	Route::group(['prefix'=>'/gallery'], function(){
+		Route::get('/', 'AdminGalleryController@list');
+	});
+	/* End: Countries Module Routes */
+
 	/* Start: States Module Routes */
 	Route::group(['prefix'=>'/states'], function(){
 		Route::get('/', 'AdminStatesController@states');
+		Route::post('/get_data', 'AdminStatesController@get_data');
 		Route::get('/add', 'AdminStatesController@add');
 		Route::get('/edit/{id}', 'AdminStatesController@edit');
 		Route::post('/addUpdate', 'AdminStatesController@savestate');
