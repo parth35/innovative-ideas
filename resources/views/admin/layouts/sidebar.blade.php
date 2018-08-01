@@ -19,8 +19,8 @@
 				<li class='{{ check_segment(2,'countries')?"active":'' }}'>
 					<a href="{{ admin_url('/countries') }}"><i class="fa fa-fw fa-map"></i> <span>Countries</span></a>
 				</li>
-				<li class='{{ check_segment(2,'gallery')?"active":'' }}'>
-					<a href="{{ admin_url('/gallery') }}"><i class="fa fa-fw fa-photo"></i> <span>Gallery</span></a>
+				<li class='{{ check_segment(2,'photos')?"active":'' }}'>
+					<a href="{{ admin_url('/photos') }}"><i class="fa fa-fw fa-photo"></i> <span>Photos</span></a>
 				</li>
 				<li class='{{ check_segment(2,'states')?"active":'' }}'>
 					<a href="{{ admin_url('/states') }}"><i class="fa fa-flag"></i> <span>States</span></a>

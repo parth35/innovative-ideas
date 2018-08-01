@@ -59,8 +59,16 @@ Route::group(['prefix'=>'/admin'], function(){
 	/* End: Countries Module Routes */
 
 	/* Start: Countries Module Routes */
-	Route::group(['prefix'=>'/gallery'], function(){
+	Route::group(['prefix'=>'/photos'], function(){
 		Route::get('/', 'AdminGalleryController@list');
+		Route::get('/add', 'AdminGalleryController@add');
+		Route::get('/edit/{id}', 'AdminGalleryController@edit');
+		Route::post('/addUpdate', 'AdminGalleryController@savephotos');
+		Route::get('/status/{id}', 'AdminGalleryController@status');
+		Route::get('/delete/{id}', 'AdminGalleryController@delete');
+		Route::post('/active_all', 'AdminGalleryController@active_all');
+		Route::post('/inactive_all', 'AdminGalleryController@inactive_all');
+		Route::post('/delete_all', 'AdminGalleryController@delete_all');
 	});
 	/* End: Countries Module Routes */
 
