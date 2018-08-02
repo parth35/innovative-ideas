@@ -184,7 +184,8 @@ class AdminUserController extends Controller
 			$user_status = \App\User::where('id',$user)->first();
 			$user_status->status = 'active';
 			$user_status->save();
-		}
+        }
+        session()->flash('success', 'User(s) status changed successfully.');
 		echo 'success';
 	}
 
@@ -204,7 +205,8 @@ class AdminUserController extends Controller
 			$user_status = \App\User::where('id',$user)->first();
 			$user_status->status = 'inactive';
 			$user_status->save();
-		}
+        }
+        session()->flash('success', 'User(s) status changed successfully.');
 		echo 'success';
 	}
 
@@ -228,7 +230,8 @@ class AdminUserController extends Controller
             }
 
 			$user_status->delete();
-		}
+        }
+        session()->flash('success', 'User(s) deleted successfully.');
 		echo 'success';
 	}
 }

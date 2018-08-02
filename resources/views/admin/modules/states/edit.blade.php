@@ -35,8 +35,6 @@
 							@endif
 						</div>
 					</div>
-				</div>
-				<div class="box-body">
 					<div class="form-group @if($errors->has('name')){{'has-error'}}@endif">
 						<label for="name" class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-10">
@@ -72,10 +70,10 @@
 			},
 			errorPlacement: function(error, element) {
 				error.insertAfter($(element));
-				$(element).parents('div').parents('div').addClass('has-error');
+				$(element).parents('div.form-group').addClass('has-error');
 			},
 			unhighlight: function(element, errorClass, validClass){
-				$(element).parents('div').parents('div').removeClass('has-error');
+				$(element).parents('div.form-group').removeClass('has-error');
 			}
 		});
 	</script>

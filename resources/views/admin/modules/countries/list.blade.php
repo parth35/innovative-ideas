@@ -69,8 +69,7 @@
 				{ "targets": 0, "orderable": false },
 				{ "targets": 4, "orderable": false },
 				{ "targets": 5, "orderable": false }
-			],
-			"order": [[ 1, "asc" ]]
+			]
 		});
 		/* End: Datatable initialization */
 	</script>

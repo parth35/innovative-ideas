@@ -22,9 +22,9 @@
 								<tr>
 									<th><input type="checkbox" name="select_all" id="select_all" value=""/></th>
 									<th>Name</th>
-									<th>Username</th>
-									<th>Email</th>
-									<th>Profile Image</th>
+									<th>Place Name</th>
+									<th>Address</th>
+									<th>Photo</th>
 									<th>Status</th>
 									<th>Action</th>
 								</tr>
@@ -36,16 +36,16 @@
 											<td>
 												<input type="checkbox" name="photos" class="data_checkbox" id="{{ $photo['id'] }}"/>
 											</td>
-											<td>{{ $photo['first_name'].' '.$photo['last_name'] }}</td>
-											<td>{{ $photo['username'] }}</td>
-											<td><a href="{{ 'mailto:'.$photo['email'] }}">{{ $photo['email'] }}</a></td>
+											<td>{{ \App\User::where('id',$photo['user_id'])->first()->first_name.' '.\App\User::where('id',$photo['user_id'])->first()->last_name }}</td>
+											<td>{{ $photo['place_name'] }}</td>
+											<td>{{ $photo['address'] }}</td>
 											<td>
-												<a class="fancy_image" href="{{ user_profile_image_url($photo['profile_image']) }}" >
-													<img width="60" height="60" src="{{ user_profile_image_url($photo['profile_image']) }}" />
+												<a class="fancy_image" href="{{ gallery_photo_url($photo['photos']) }}" >
+													<img width="60" height="60" src="{{ gallery_photo_url($photo['photos']) }}" />
 												</a>
 											</td>
 											<td>
-												{!! change_status($photo['status'],base_url('/admin/photos/status/'.$photo['id'])) !!}
+												{!! photo_approve($photo['approve'],base_url('/admin/photos/status/'.$photo['id'])) !!}
 											</td>
 											<td><a title='Edit' href="{{ base_url('/admin/photos/edit/'.$photo['id']) }}"><i class="fa fa-fw fa-edit"></i></a>&nbsp;&nbsp;<a title='Delete' href="{{ base_url('/admin/photos/delete/'.$photo['id']) }}"><i class="fa fa-fw fa-remove"></i></a></td>
 										</tr>
@@ -77,8 +77,7 @@
 				{ "targets": 0, "orderable": false },
 				{ "targets": 4, "orderable": false },
 				{ "targets": 6, "orderable": false }
-			],
-			"order": [[ 1, "asc" ]]
+			]
 		});
 		/* End: Datatable initialization */
 

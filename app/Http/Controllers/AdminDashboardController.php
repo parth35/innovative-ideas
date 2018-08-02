@@ -14,6 +14,7 @@ class AdminDashboardController extends Controller
     public function dashboard()
     {
         $title = 'Dashboard';
-        return view('admin.modules.dashboard',['title' => $title]);
+        $users = \App\User::limit(8)->orderBy('id','DESC')->get();
+        return view('admin.modules.dashboard',['title' => $title, 'users' => $users]);
     }
 }

@@ -35,21 +35,17 @@
 							@endif
 						</div>
 					</div>
-				</div>
-				<div class="box-body">
 					<div class="form-group @if($errors->has('state_id')){{'has-error'}}@endif">
 						<label for="state_id" class="col-sm-2 control-label">States</label>
 						<div class="col-sm-10">
 							<select name="state_id" id="state_id" class="form-control">
-									<option>Select City</option>
+								<option>Select State</option>
 							</select>
 							@if ($errors->has('state_id'))
 								<span class="help-block">{{ $errors->first('state_id') }}</span>
 							@endif
 						</div>
 					</div>
-				</div>
-				<div class="box-body">
 					<div class="form-group @if($errors->has('name')){{'has-error'}}@endif">
 						<label for="name" class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-10">
@@ -123,10 +119,10 @@
 			},
 			errorPlacement: function(error, element) {
 				error.insertAfter($(element));
-				$(element).parents('div').parents('div').addClass('has-error');
+				$(element).parents('div.form-group').addClass('has-error');
 			},
 			unhighlight: function(element, errorClass, validClass){
-				$(element).parents('div').parents('div').removeClass('has-error');
+				$(element).parents('div.form-group').removeClass('has-error');
 			}
 		});
 	</script>

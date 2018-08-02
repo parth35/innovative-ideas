@@ -61,6 +61,8 @@ Route::group(['prefix'=>'/admin'], function(){
 	/* Start: Countries Module Routes */
 	Route::group(['prefix'=>'/photos'], function(){
 		Route::get('/', 'AdminGalleryController@list');
+		Route::post('/get_data', 'AdminGalleryController@get_data');
+		Route::post('/get_city_data', 'AdminGalleryController@get_city_data');
 		Route::get('/add', 'AdminGalleryController@add');
 		Route::get('/edit/{id}', 'AdminGalleryController@edit');
 		Route::post('/addUpdate', 'AdminGalleryController@savephotos');

@@ -77,8 +77,7 @@
 				{ "targets": 0, "orderable": false },
 				{ "targets": 4, "orderable": false },
 				{ "targets": 6, "orderable": false }
-			],
-			"order": [[ 1, "asc" ]]
+			]
 		});
 		/* End: Datatable initialization */
 

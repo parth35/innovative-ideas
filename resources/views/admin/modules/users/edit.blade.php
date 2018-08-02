@@ -111,10 +111,10 @@
 			},
 			errorPlacement: function(error, element) {
 				error.insertAfter($(element));
-				$(element).parents('div').parents('div').addClass('has-error');
+				$(element).parents('div.form-group').addClass('has-error');
 			},
 			unhighlight: function(element, errorClass, validClass){
-				$(element).parents('div').parents('div').removeClass('has-error');
+				$(element).parents('div.form-group').removeClass('has-error');
 			}
 		});
 	</script>
