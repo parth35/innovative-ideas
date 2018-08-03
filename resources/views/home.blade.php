@@ -42,11 +42,48 @@
 @endsection
 @push('styles')
 	<style>
+		/* Start: style for mail home page slider */
 		.carousel-inner > .item > img,
 		.carousel-inner > .item > a > img {
 			margin: auto;
 			height: 650px;
 		}
+		@media only screen and (max-width: 1500px) {
+			.carousel-inner > .item > img,
+			.carousel-inner > .item > a > img {
+				margin: auto;
+				height: 500px;
+			}
+		}
+		@media only screen and (max-width: 1200px) {
+			.carousel-inner > .item > img,
+			.carousel-inner > .item > a > img {
+				margin: auto;
+				height: 400px;
+			}
+		}
+		@media only screen and (max-width: 770px) {
+			.carousel-inner > .item > img,
+			.carousel-inner > .item > a > img {
+				margin: auto;
+				height: 300px;
+			}
+		}
+		@media only screen and (max-width: 415px) {
+			.carousel-inner > .item > img,
+			.carousel-inner > .item > a > img {
+				margin: auto;
+				height: 200px;
+			}
+		}
+		@media only screen and (max-width: 360px) {
+			.carousel-inner > .item > img,
+			.carousel-inner > .item > a > img {
+				margin: auto;
+				height: 200px;
+			}
+		}
+		/* End: style for mail home page slider */
 	</style>
 @endpush
 @push('scripts')

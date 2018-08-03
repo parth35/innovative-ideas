@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{ css_url('/bootstrap.min.css') }}">
 	<style>
+		/* Start: header menu style */
 		.navbar-default {
 			background-color: rgba(0,0,0,0.7);
 			margin: 0;
@@ -25,12 +26,15 @@
 			color: #fff;
 			background-color: #999999
 		}
+		/* End: header menu style */
+		/* Start: footer style */
 		footer {
 			padding: 25px 15px;
 			color: #999999;
 			font-size: 13px;
 			background: #0f0e0e;
 		}
+		/* End: footer style */
 	</style>
 	@stack('styles')
 </head>
