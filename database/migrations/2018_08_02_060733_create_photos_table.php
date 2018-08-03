@@ -23,6 +23,7 @@ class CreatePhotosTable extends Migration
             $table->longText('note')->nullable();
             $table->string('photos');
             $table->enum('approve', ['yes', 'no'])->default('no');
+            $table->enum('show_in_slider', ['yes', 'no'])->default('no');
             $table->timestamps();
         });
     }

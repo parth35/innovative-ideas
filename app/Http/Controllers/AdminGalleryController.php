@@ -172,6 +172,31 @@ class AdminGalleryController extends Controller
 		$message = 'Photo status changed successfully.';
 		return redirect('/admin/photos')->with('success', $message);
     }
+
+    /**
+	 * This function is used for change the status of photo is show in slider in front home page or not.
+     * 
+	 * @param int $id
+	 * @version 1.0.0
+	 * @author Parth
+	 * @return Redirect '/admin/photos'
+	 */
+	public function show_in_slider($id)
+	{
+		$photo_status = \App\Photo::where('id',$id)->first();
+		if($photo_status->show_in_slider == 'yes')
+		{
+			$photo_status->show_in_slider = 'no';
+			$photo_status->save();
+		}
+		else
+		{
+			$photo_status->show_in_slider = 'yes';
+			$photo_status->save();
+		}
+		$message = 'Photo status changed successfully.';
+		return redirect('/admin/photos')->with('success', $message);
+    }
     
     /**
 	 * This function is used for delete the data from database.

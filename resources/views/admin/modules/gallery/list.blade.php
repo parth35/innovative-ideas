@@ -25,6 +25,7 @@
 									<th>Place Name</th>
 									<th>Address</th>
 									<th>Photo</th>
+									<th>Show In Slider</th>
 									<th>Status</th>
 									<th>Action</th>
 								</tr>
@@ -43,6 +44,13 @@
 												<a class="fancy_image" href="{{ gallery_photo_url($photo['photos']) }}" >
 													<img width="60" height="60" src="{{ gallery_photo_url($photo['photos']) }}" />
 												</a>
+											</td>
+											<td>
+												@if($photo['show_in_slider'] == 'yes')
+													<a class='edt-dlt' href='{{ base_url('/admin/photos/show_in_slider/'.$photo['id']) }}' style='color:green'><b>Yes</b></a>
+												@else
+													<a href='{{ base_url('/admin/photos/show_in_slider/'.$photo['id']) }}' style='color:red'><b>No</b></a>
+												@endif
 											</td>
 											<td>
 												{!! photo_approve($photo['approve'],base_url('/admin/photos/status/'.$photo['id'])) !!}
@@ -76,7 +84,7 @@
 			"columnDefs": [
 				{ "targets": 0, "orderable": false },
 				{ "targets": 4, "orderable": false },
-				{ "targets": 6, "orderable": false }
+				{ "targets": 7, "orderable": false }
 			]
 		});
 		/* End: Datatable initialization */

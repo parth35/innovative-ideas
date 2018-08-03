@@ -63,6 +63,7 @@ Route::group(['prefix'=>'/admin'], function(){
 		Route::get('/edit/{id}', 'AdminGalleryController@edit');
 		Route::post('/addUpdate', 'AdminGalleryController@savephotos');
 		Route::get('/status/{id}', 'AdminGalleryController@status');
+		Route::get('/show_in_slider/{id}', 'AdminGalleryController@show_in_slider');
 		Route::get('/delete/{id}', 'AdminGalleryController@delete');
 		Route::post('/active_all', 'AdminGalleryController@active_all');
 		Route::post('/inactive_all', 'AdminGalleryController@inactive_all');
