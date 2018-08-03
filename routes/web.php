@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
-
 /* Start: Admin Routes */
 Route::group(['prefix'=>'/admin'], function(){
 
@@ -118,3 +114,7 @@ Route::group(['prefix'=>'/admin'], function(){
 	/* End: User Module Routes */
 });
 /* End: Admin Routes */
+
+/* Start: Front Routes */
+Route::get('/', 'HomeController@home');
+/* End: Front Routes */
