@@ -118,4 +118,8 @@ Route::group(['prefix'=>'/admin'], function(){
 
 /* Start: Front Routes */
 Route::get('/', 'HomeController@home');
+Route::get('/about', 'HomeController@about');
+Route::get('/photos', 'HomeController@photos');
+Route::get('/send_photo', 'HomeController@send_photo');
+Route::get('/log_in', 'HomeController@log_in');
 /* End: Front Routes */

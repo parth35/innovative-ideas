@@ -11,7 +11,7 @@ class HomeController extends Controller
      *
      * @author Parth
      * @version 1.0.0
-     * @return view ''
+     * @return view 'home'
      */
     public function Home()
     {
@@ -32,5 +32,53 @@ class HomeController extends Controller
             $section_back_image = '';
         }
         return view('home',['photos' => $photos, 'title' => $title, 'section_back_image' => $section_back_image]);
+    }
+
+    /**
+     * This function is used for view about page.
+     *
+     * @author Parth
+     * @version 1.0.0
+     * @return view 'about'
+     */
+    public function about()
+    {
+        return view('about');
+    }
+
+    /**
+     * This function is used for view photos page.
+     *
+     * @author Parth
+     * @version 1.0.0
+     * @return view 'photos'
+     */
+    public function photos()
+    {
+        return view('photos');
+    }
+
+    /**
+     * This function is used for view send_photo page.
+     *
+     * @author Parth
+     * @version 1.0.0
+     * @return view 'send_photo'
+     */
+    public function send_photo()
+    {
+        return view('send_photo');
+    }
+
+    /**
+     * This function is used for view log_in page.
+     *
+     * @author Parth
+     * @version 1.0.0
+     * @return view 'log_in'
+     */
+    public function log_in()
+    {
+        return view('log_in');
     }
 }

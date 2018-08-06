@@ -6,6 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{ css_url('/bootstrap.min.css') }}">
 	<style>
+		/**/
+		a, p, h1, h2, h3, h4, span {
+			font-family: cursive;
+		}
 		/* Start: header menu style */
 		.navbar-default {
 			background-color: rgba(0,0,0,0.7);
@@ -14,6 +18,7 @@
 		}
 		.navbar-default .navbar-brand {
 			color: #fff;
+			font-family: sans-serif;
 		}
 		.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
 			color: #ffffff;
@@ -53,19 +58,19 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="{{ (check_segment(1,''))?'active':'' }}">
-						<a href="#" title="Home">Home</a>
+						<a href="{{ base_url() }}" title="Home">Home</a>
 					</li>
 					<li class="{{ (check_segment(1,'about'))?'active':'' }}">
-						<a href="#" title="About">About</a>
+						<a href="{{ base_url('/about') }}" title="About">About</a>
 					</li>
-					<li class="{{ (check_segment(1,'gallery'))?'active':'' }}">
-						<a href="#" title="Gallery">Gallery</a>
+					<li class="{{ (check_segment(1,'photos'))?'active':'' }}">
+						<a href="{{ base_url('/photos') }}" title="Photos">Photos</a>
 					</li>
 					<li class="{{ (check_segment(1,'send_photo'))?'active':'' }}">
-						<a href="#" title="Send Photo">Send Photo</a>
+						<a href="{{ base_url('/send_photo') }}" title="Send Photo">Send Photo</a>
 					</li>
 					<li class="{{ (check_segment(1,'log_in'))?'active':'' }}">
-						<a href="#" title="Log In/Sign Up">Log In/Sign Up</a>
+						<a href="{{ base_url('/log_in') }}" title="Log In/Sign Up">Log In/Sign Up</a>
 					</li>
 				</ul>
 			</div>

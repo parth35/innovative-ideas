@@ -1,5 +1,5 @@
 	<footer class="text-center">
-			© {{ date('Y') }} Innovative Ideas
+			<p>© {{ date('Y') }} Innovative Ideas</p>
 	</footer>
 	<script src="{{ js_url('/jquery.min.js') }}"></script>
 	<script src="{{ js_url('/bootstrap.min.js') }}"></script>

@@ -67,7 +67,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="features1 ptb-60" id="features1-1" data-rv-view="764">
+	<section class="ptb-60">
 		<div class="container">
 			<div class="media-container-row">
 				<div class="card p-3 col-12 col-md-6 col-lg-4">
@@ -75,11 +75,8 @@
 						<span class="mbr-iconfont mbri-users" style="color: rgb(0, 0, 0);" media-simple="true"></span>
 					</div>
 					<div class="card-box">
-						<h4 class="card-title py-3 mbr-fonts-style display-5">
-							Creativity</h4>
-						<p class="mbr-text mbr-fonts-style display-7">
-							It's the ability to think outside the box. We make decisions, create something new and generate a lot of ideas.
-						</p>
+						<h4 class="card-title py-3 mbr-fonts-style display-5">Creativity</h4>
+						<p class="mbr-text mbr-fonts-style display-7">It's the ability to think outside the box. We make decisions, create something new and generate a lot of ideas.</p>
 					</div>
 				</div>
 				<div class="card p-3 col-12 col-md-6 col-lg-4">
@@ -87,11 +84,8 @@
 						<span class="mbr-iconfont mbri-globe" style="color: rgb(0, 0, 0);" media-simple="true"></span>
 					</div>
 					<div class="card-box">
-						<h4 class="card-title py-3 mbr-fonts-style display-5">
-							Worldwide</h4>
-						<p class="mbr-text mbr-fonts-style display-7">
-							All sites you make with Mobirise are mobile-friendly. You don't have to create a special mobile version of your site.
-						</p>
+						<h4 class="card-title py-3 mbr-fonts-style display-5">Worldwide</h4>
+						<p class="mbr-text mbr-fonts-style display-7">All sites you make with Mobirise are mobile-friendly. You don't have to create a special mobile version of your site.</p>
 					</div>
 				</div>
 				<div class="card p-3 col-12 col-md-6 col-lg-4">
@@ -99,12 +93,8 @@
 						<span class="mbr-iconfont mbri-smile-face" style="color: rgb(0, 0, 0);" media-simple="true"></span>
 					</div>
 					<div class="card-box">
-						<h4 class="card-title py-3 mbr-fonts-style display-5">
-							Unique Styles
-						</h4>
-						<p class="mbr-text mbr-fonts-style display-7">
-							Mobirise offers many site blocks in several themes, and though these blocks are pre-made, they are flexible.
-						</p>
+						<h4 class="card-title py-3 mbr-fonts-style display-5">Unique Styles</h4>
+						<p class="mbr-text mbr-fonts-style display-7">Mobirise offers many site blocks in several themes, and though these blocks are pre-made, they are flexible.</p>
 					</div>
 				</div>
 			</div>
@@ -187,7 +177,6 @@
 			color: #e7e7e7;
 			max-width: 350px;
 			margin: 0 auto;
-			font-family: 'Lora', serif;
 			margin-top: 80px;
 		}
 		.sec-two p {
@@ -197,7 +186,6 @@
 			color: #e7e7e7;
 			max-width: 900px;
 			margin: 0 auto;
-			font-family: 'Lora', serif;
 			margin-top: 20px;
 		}
 		/* End: second section how can you help */
