@@ -149,11 +149,17 @@ footer {
 	.m-b-50 {
 		margin-bottom: 50px;
 	}
+	.m-t-50 {
+		margin-top: 50px;
+	}
 	.m-t-85 {
 		margin-top: 85px;
 	}
 	.p-t-150 {
-		padding-top: 150px;
+		margin-top: 150px;
+	}
+	.p-t-15 {
+		margin-top: 15px;
 	}
 	.m-b-8 {
 		margin-bottom: 8px;
@@ -234,6 +240,10 @@ footer {
 		width: 100%;
 		position: relative;
 		border-bottom: 2px solid #d9d9d9;
+	}
+
+	.wrap-input span{
+		color: #ffffff;
 	}
 
 	.input {

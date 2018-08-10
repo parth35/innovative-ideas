@@ -21,7 +21,7 @@
 						<button type="submit" class="login-form-btn">Login</button>
 					</div>
 				</form>
-				<ul class="login-more p-t-150">
+				<ul class="login-more p-t-15">
 					<li class="m-b-8">
 						<span class="txt1">Forgot</span>
 						<a href="{{ base_url('/forgot_password') }}" class="txt2"><strong>Password?</strong></a>

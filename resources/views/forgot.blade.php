@@ -16,7 +16,7 @@
 						<button type="submit" class="login-form-btn">Submit</button>
 					</div>
 				</form>
-				<ul class="login-more p-t-150">
+				<ul class="login-more p-t-15">
 					<li class="m-b-8">
 						<span class="txt1">Back to </span>
 						<a href="{{ base_url('/log_in') }}" class="txt2"><strong>Log in</strong></a>
@@ -30,3 +30,17 @@
 		</div>
 	</div>
 @endsection
+@push('scripts')
+<script>
+	$('.input').each(function(){
+		$(this).on('blur', function(){
+			if($(this).val().trim() != "") {
+				$(this).addClass('has-val');
+			}
+			else {
+				$(this).removeClass('has-val');
+			}
+		})
+	})
+</script>
+@endpush
