@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Socialite;
 
 class HomeController extends Controller
 {
@@ -90,44 +91,45 @@ class HomeController extends Controller
         return view('log_in',['title' => $title, 'section_back_image' => $section_back_image]);
     }
     
-    /**
-     * This function is used for view forgot page.
-     *
-     * @author Parth
-     * @version 1.0.0
-     * @return view 'forgot'
-     */
-    public function forgot()
-    {
-        $title = 'Forgot Password';
-        if(\App\Photo::where('approve','yes')->where('show_in_slider','yes')->count()>0)
-        {
-            $section_back_image = \App\Photo::where('approve','yes')->where('show_in_slider','yes')->inRandomOrder()->first();
-        }
-        else{
-            $section_back_image = '';
-        }
-        return view('forgot',['title' => $title, 'section_back_image' => $section_back_image]);
-    }
+    public function socialLogin($service)
+	{
+		return Socialite::driver($service)->redirect();
+	}
 
-    /**
-     * This function is used for view sign_up page.
-     *
-     * @author Parth
-     * @version 1.0.0
-     * @return view 'sign_up'
-     */
-    public function sign_up()
-    {
-        $title = 'Sign Up';
-        if(\App\Photo::where('approve','yes')->where('show_in_slider','yes')->count()>0)
-        {
-            $section_back_image = \App\Photo::where('approve','yes')->where('show_in_slider','yes')->inRandomOrder()->first();
-        }
-        else{
-            $section_back_image = '';
-        }
-        return view('sign_up',['title' => $title, 'section_back_image' => $section_back_image]);
-    }
+	/**
+	 * Obtain the user information from Social Logged in.
+	 * @param $social
+	 * @return Response
+	 */
+	public function handleProviderCallback($service)
+	{
+		$userSocial = Socialite::driver($service)->user();
 
+		$authUser = $this->findOrCreateUser($userSocial,$service);
+		
+		\Auth::login($authUser, true);
+        return redirect()->action('HomeController@home');
+    }
+    
+    public function findOrCreateUser($user,$service)
+    {
+        if (\App\User::where('service_id', '=', $user->id)->exists())
+        {
+            return \App\User::where('service_id', $user->id)->first();
+        }
+        else
+        {
+        	$userTable 				    = new \App\User;
+        	$userTable->name	        = $user->name;
+        	$userTable->username	    = $user->name;
+        	$userTable->email		    = $user->email;
+        	$userTable->service		    = $service;
+        	$userTable->service_id	    = $user->id;
+        	$userTable->profile_image   = $user->avatar;
+        	$userTable->password	    = '';
+        	$userTable->save();
+        	$userTable->id;
+	        return \App\User::where('id',$userTable->id)->first();
+        }
+    }
 }

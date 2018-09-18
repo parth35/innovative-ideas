@@ -7,45 +7,25 @@
 					@csrf
 					<span class="login-form-title">Welcome</span>
 
-					<div class="wrap-input m-t-85 m-b-35">
-						<input type="text" name="email" id="email" class="input" >
-						<span class="focus-input" data-placeholder="Email"></span>
+					<div class="m-t-85 m-b-35">
 					</div>
 
-					<div class="wrap-input m-b-50">
-						<input type="password" name="password" id="password" class="input">
-						<span class="focus-input" data-placeholder="Password"></span>
+					<div class="box">
+						<div class="box-body">
+							<a href="{{ base_url('login/facebook') }}" class="btn btn-block btn-social btn-facebook">
+								<i class="fa fa-facebook"></i> Sign in with Facebook
+							</a>
+						</div>
 					</div>
-
-					<div class="container-login-form-btn">
-						<button type="submit" class="login-form-btn">Login</button>
+					<div class="box">
+						<div class="box-body">
+							<a href="{{ base_url('login/google') }}" class="btn btn-block btn-social btn-facebook">
+								<i class="fa fa-facebook"></i> Sign in with Google
+							</a>
+						</div>
 					</div>
 				</form>
-				<ul class="login-more p-t-15">
-					<li class="m-b-8">
-						<span class="txt1">Forgot</span>
-						<a href="{{ base_url('/forgot_password') }}" class="txt2"><strong>Password?</strong></a>
-					</li>
-					<li>
-						<span class="txt1">Don’t have an account?</span>
-						<a href="{{ base_url('/sign_up') }}" class="txt2"><strong>Sign up</strong></a>
-					</li>
-				</ul>
 			</div>
 		</div>
 	</div>
 @endsection
-@push('scripts')
-<script>
-	$('.input').each(function(){
-		$(this).on('blur', function(){
-			if($(this).val().trim() != "") {
-				$(this).addClass('has-val');
-			}
-			else {
-				$(this).removeClass('has-val');
-			}
-		})
-	})
-</script>
-@endpush
