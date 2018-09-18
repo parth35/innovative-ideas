@@ -11,18 +11,12 @@
 					</div>
 
 					<div class="box">
-						<div class="box-body">
-							<a href="{{ base_url('login/facebook') }}" class="btn btn-block btn-social btn-facebook">
-								<i class="fa fa-facebook"></i> Sign in with Facebook
-							</a>
-						</div>
-					</div>
-					<div class="box">
-						<div class="box-body">
-							<a href="{{ base_url('login/google') }}" class="btn btn-block btn-social btn-facebook">
-								<i class="fa fa-facebook"></i> Sign in with Google
-							</a>
-						</div>
+						<a href="{{ base_url('login/facebook') }}" class="btn btn-block btn-social btn-facebook">
+							<i class="fa fa-facebook"></i> Sign in with Facebook
+						</a>
+						<a href="{{ base_url('login/google') }}" class="btn btn-block btn-social btn-google">
+							<i class="fa fa-google"></i> Sign in with Google
+						</a>
 					</div>
 				</form>
 			</div>
