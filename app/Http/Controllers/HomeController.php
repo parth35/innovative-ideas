@@ -91,16 +91,25 @@ class HomeController extends Controller
         return view('log_in',['title' => $title, 'section_back_image' => $section_back_image]);
     }
     
+    /**
+     * This function is used for socialite login.
+     *
+	 * @param $service
+     * @author Parth
+     * @version 1.0.0
+     */
     public function socialLogin($service)
 	{
 		return Socialite::driver($service)->redirect();
 	}
 
 	/**
-	 * Obtain the user information from Social Logged in.
-	 * @param $social
-	 * @return Response
-	 */
+	 * This function is used for obtain the user information from Social Logged in.
+     *
+     * @author Parth
+	 * @param $service
+     * @version 1.0.0
+     */
 	public function handleProviderCallback($service)
 	{
 		$userSocial = Socialite::driver($service)->user();
@@ -111,6 +120,14 @@ class HomeController extends Controller
         return redirect()->action('HomeController@home');
     }
     
+	/**
+	 * This function is used for add new user or check already exist.
+     *
+     * @author Parth
+	 * @param $service
+	 * @param $user
+     * @version 1.0.0
+     */
     public function findOrCreateUser($user,$service)
     {
         if (\App\User::where('service_id', '=', $user->id)->exists())
@@ -131,5 +148,17 @@ class HomeController extends Controller
         	$userTable->id;
 	        return \App\User::where('id',$userTable->id)->first();
         }
+    }
+    
+    /**
+	 * This function is used for log out.
+     *
+     * @author Parth
+     * @version 1.0.0
+     */
+    public function log_out()
+    {
+        \Auth::logout();
+        return redirect()->back();
     }
 }

@@ -34,9 +34,15 @@
 					<li class="{{ (check_segment(1,'send_photo'))?'active':'' }}">
 						<a href="{{ base_url('/send_photo') }}" title="Send Photo">Send Photo</a>
 					</li>
-					<li class="{{ (check_segment(1,'log_in'))?'active':(check_segment(1,'sign_up'))?'active':'' }}">
-						<a href="{{ base_url('/log_in') }}" title="Log In/Sign Up">Log In/Sign Up</a>
-					</li>
+					@if(Auth::check())
+						<li class="{{ (check_segment(1,'log_out'))?'active':'' }}">
+							<a href="{{ base_url('/log_out') }}" title="{{ Auth::user()->name }}">Log Out</a>
+						</li>
+					@else
+						<li class="{{ (check_segment(1,'log_in'))?'active':'' }}">
+							<a href="{{ base_url('/log_in') }}" title="Log In">Log In</a>
+						</li>
+					@endif
 				</ul>
 			</div>
 		</div>

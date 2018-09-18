@@ -122,6 +122,7 @@ Route::get('/about', 'HomeController@about');
 Route::get('/photos', 'HomeController@photos');
 Route::get('/send_photo', 'HomeController@send_photo');
 Route::get('/log_in', 'HomeController@log_in');
+Route::get('/log_out', 'HomeController@log_out');
 Route::get('/login/{service}', 'HomeController@socialLogin');
 Route::get('/login/{service}/callback/', 'HomeController@handleProviderCallback');
 /* End: Front Routes */
