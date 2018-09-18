@@ -14,12 +14,12 @@
 					<li class="dropdown user user-menu">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<img src="{{ user_profile_image_url(Auth::user()->profile_image) }}" class="user-image" alt="User Image">
-							<span class="hidden-xs">{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</span>
+							<span class="hidden-xs">{{ Auth::user()->name }}</span>
 						</a>
 						<ul class="dropdown-menu">
 							<li class="user-header">
 								<img src="{{ user_profile_image_url(Auth::user()->profile_image) }}" class="img-circle" alt="User Image">
-								<p>{{ Auth::user()->first_name.' '.Auth::user()->last_name }}
+								<p>{{ Auth::user()->name }}
 									<small>Member since - {{ date('M Y',strtotime(Auth::user()->created_at)) }}</small>
 								</p>
 							</li>

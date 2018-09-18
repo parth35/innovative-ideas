@@ -36,7 +36,7 @@
 											<td>
 												<input type="checkbox" name="users" class="data_checkbox" id="{{ $user['id'] }}"/>
 											</td>
-											<td>{{ $user['first_name'].' '.$user['last_name'] }}</td>
+											<td>{{ $user['name'] }}</td>
 											<td>{{ $user['username'] }}</td>
 											<td><a href="{{ 'mailto:'.$user['email'] }}">{{ $user['email'] }}</a></td>
 											<td>

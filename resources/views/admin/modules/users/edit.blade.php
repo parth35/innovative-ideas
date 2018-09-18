@@ -22,21 +22,12 @@
 					<input type="hidden" id="id" name="id" value="{{ $id }}" />
 				@endif
 				<div class="box-body">
-					<div class="form-group @if($errors->has('first_name')){{'has-error'}}@endif">
-						<label for="first_name" class="col-sm-2 control-label">First Name</label>
+					<div class="form-group @if($errors->has('name')){{'has-error'}}@endif">
+						<label for="name" class="col-sm-2 control-label">Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" value="{{ (isset($user['first_name']) && !empty($user['first_name']))?$user['first_name']:'' }}">
-							@if ($errors->has('first_name'))
-								<span class="help-block">{{ $errors->first('first_name') }}</span>
-							@endif
-						</div>
-					</div>
-					<div class="form-group @if($errors->has('last_name')){{'has-error'}}@endif">
-						<label for="last_name" class="col-sm-2 control-label">Last Name</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name" value="{{ (isset($user['last_name']) && !empty($user['last_name']))?$user['last_name']:'' }}">
-							@if ($errors->has('last_name'))
-								<span class="help-block">{{ $errors->first('last_name') }}</span>
+							<input type="text" class="form-control" name="name" id="name" placeholder="Name" value="{{ (isset($user['name']) && !empty($user['name']))?$user['name']:'' }}">
+							@if ($errors->has('name'))
+								<span class="help-block">{{ $errors->first('name') }}</span>
 							@endif
 						</div>
 					</div>
@@ -96,15 +87,13 @@
 			errorClass: 'help-block',
 			errorElement: 'span',
 			rules: {
-				first_name: { required: true, minlength:2, maxlength:100 },
-				last_name: { required: true, minlength:2, maxlength:100 },
+				name: { required: true, minlength:2, maxlength:100 },
 				username: { required: true, minlength:2, maxlength:100 },
 				email: { required: true, maxlength:150, email: true },
 				password: { required: true }
 			},
 			messages: {
-				first_name: { required: "The first name field is required." },
-				last_name: { required: "The last name field is required." },
+				name: { required: "The name field is required." },
 				username: { required: "The username field is required." },
 				email: { required: "The email field is required.", email: "Please enter a valid email." },
 				password: { required: "The password field is required." },

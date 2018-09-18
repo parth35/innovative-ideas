@@ -8,7 +8,7 @@
 					<img src="{{ user_profile_image_url(Auth::user()->profile_image) }}" class="img-circle" alt="User Image">
 				</div>
 				<div class="pull-left info">
-					<p>{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</p>
+					<p>{{ Auth::user()->name }}</p>
 				</div>
 			</div>
 			<!-- sidebar menu: : style can be found in sidebar.less -->

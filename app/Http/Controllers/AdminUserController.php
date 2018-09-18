@@ -68,8 +68,7 @@ class AdminUserController extends Controller
         if(isset($input['id']) && !empty($input['id']))
         {
             $validatedData = $r->validate([
-                'first_name'    => 'required|max:100',
-                'last_name'     => 'required|max:100',
+                'name'          => 'required|max:100',
                 'email'         => 'required|max:150|email|unique:users,id,'.$input['id'],
                 'username'      => 'required|max:100',
                 'password'      => 'required',
@@ -79,8 +78,7 @@ class AdminUserController extends Controller
         else
         {
             $validatedData = $r->validate([
-                'first_name'    => 'required|max:100',
-                'last_name'     => 'required|max:100',
+                'name'          => 'required|max:100',
                 'email'         => 'required|max:150|email|unique:users',
                 'username'      => 'required|max:100',
                 'password'      => 'required',
@@ -109,8 +107,7 @@ class AdminUserController extends Controller
             $message = 'User added successfully.';
             $user = new \App\User;
         }
-        $user->first_name = $input['first_name'];
-        $user->last_name = $input['last_name'];
+        $user->name = $input['name'];
         $user->email = $input['email'];
         $user->username = $input['username'];
         $user->password = Hash::make($input['password']);
