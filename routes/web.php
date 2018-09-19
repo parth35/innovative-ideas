@@ -125,4 +125,5 @@ Route::get('/log_in', 'HomeController@log_in');
 Route::get('/log_out', 'HomeController@log_out');
 Route::get('/login/{service}', 'HomeController@socialLogin');
 Route::get('/login/{service}/callback/', 'HomeController@handleProviderCallback');
+Route::post('/get_tags', 'HomeController@get_tags');
 /* End: Front Routes */
