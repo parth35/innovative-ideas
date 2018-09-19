@@ -2,9 +2,9 @@
 
 function user_profile_image_url($image)
 {
-	if(isset($image) && !empty($image) && file_exists( base_path().'/public/image/user_profile_image/'.$image))
+	if(isset($image) && !empty($image))
 	{
-		return base_url('/image/user_profile_image/'.$image);
+		return $image;
 	}
 	else
 	{

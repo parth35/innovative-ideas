@@ -22,7 +22,7 @@
 							@foreach($users as $user)
 								<li>
 									<img width="113" height="113" src="{{ user_profile_image_url($user['profile_image']) }}" alt="User Image">
-									<a class="users-list-name" href="#">{{ $user['first_name'].' '.$user['last_name'] }}</a>
+									<a class="users-list-name" href="#">{{ $user['name'] }}</a>
 									<span class="users-list-date">{{ date('d M Y',strtotime($user['created_at'])) }}</span>
 								</li>
 							@endforeach

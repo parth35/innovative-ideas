@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="{{ css_url('/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ css_url('/front-main.css') }}">
 	<link rel="stylesheet" href="{{ base_url('/font-awesome/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ css_url('/toastr-message.min.css') }}">
 	@stack('styles')
 </head>
 <body>

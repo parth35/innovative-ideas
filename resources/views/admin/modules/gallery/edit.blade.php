@@ -27,7 +27,7 @@
 						<div class="col-sm-10">
 							<select name="user_id" id="user_id" class="form-control">
 								@foreach($users as $user)
-									<option value="{{ $user['id'] }}" {{ (isset($photo['user_id']) && $photo['user_id'] == $user['id'])?'selected':'' }}>{{ $user['first_name'].' '.$user['last_name'] }}</option>
+									<option value="{{ $user['id'] }}" {{ (isset($photo['user_id']) && $photo['user_id'] == $user['id'])?'selected':'' }}>{{ $user['name'] }}</option>
 								@endforeach
 							</select>
 							@if ($errors->has('user_id'))

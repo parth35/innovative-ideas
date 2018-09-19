@@ -37,7 +37,7 @@
 											<td>
 												<input type="checkbox" name="photos" class="data_checkbox" id="{{ $photo['id'] }}"/>
 											</td>
-											<td>{{ \App\User::where('id',$photo['user_id'])->first()->first_name.' '.\App\User::where('id',$photo['user_id'])->first()->last_name }}</td>
+											<td>{{ \App\User::where('id',$photo['user_id'])->first()->name }}</td>
 											<td>{{ $photo['place_name'] }}</td>
 											<td>{{ $photo['address'] }}</td>
 											<td>

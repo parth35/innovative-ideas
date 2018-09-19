@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Socialite;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -68,7 +69,15 @@ class HomeController extends Controller
      */
     public function send_photo()
     {
-        return view('send_photo');
+        if(Auth::check())
+        {
+            return view('send_photo');
+        }
+        else
+        {
+            session()->flash('warning', 'You have to login first.');
+            return redirect('log_in');
+        }
     }
 
     /**
@@ -142,7 +151,7 @@ class HomeController extends Controller
         	$userTable->email		    = $user->email;
         	$userTable->service		    = $service;
         	$userTable->service_id	    = $user->id;
-        	$userTable->profile_image   = $user->avatar;
+        	$userTable->profile_image   = $user->avatar_original;
         	$userTable->password	    = '';
         	$userTable->save();
         	$userTable->id;

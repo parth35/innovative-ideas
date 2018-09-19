@@ -18,7 +18,7 @@
 							<img src="{{ gallery_photo_url($photo['photos']) }}" alt="{{ $photo['photos'] }}">
 							<div class="carousel-caption">
 								<h3>{{ ucfirst($photo['place_name']) }}</h3>
-								<p>By - {{ \App\User::where('id',$photo['user_id'])->first()->first_name.' '.\App\User::where('id',$photo['user_id'])->first()->last_name }}</p>
+								<p>By - {{ \App\User::where('id',$photo['user_id'])->first()->name }}</p>
 							</div>
 						</div>
 					@endforeach
