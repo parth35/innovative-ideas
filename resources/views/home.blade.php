@@ -3,6 +3,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			{{-- Slider Start --}}
+			{{-- Change to Wow slider --}}
 			@if(isset($photos) && !empty($photos) && count($photos)>0)
 			<div id="home_main_slider" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">

@@ -19,16 +19,16 @@ class HomeController extends Controller
 	{
 		$title = 'Home';
 		$count = 3;
-		if(\App\Photo::where('approve','yes')->where('show_in_slider','yes')->count()>=$count)
+		if(\App\Photo::approved()->where('show_in_slider','yes')->count()>=$count)
 		{
-			$photos = \App\Photo::where('approve','yes')->where('show_in_slider','yes')->get()->random($count);
+			$photos = \App\Photo::approved()->where('show_in_slider','yes')->get()->random($count);
 		}
 		else{
 			$photos = '';
 		}
-		if(\App\Photo::where('approve','yes')->where('show_in_slider','yes')->count()>0)
+		if(\App\Photo::approved()->where('show_in_slider','yes')->count()>0)
 		{
-			$section_back_image = \App\Photo::where('approve','yes')->where('show_in_slider','yes')->inRandomOrder()->first();
+			$section_back_image = \App\Photo::approved()->where('show_in_slider','yes')->inRandomOrder()->first();
 		}
 		else{
 			$section_back_image = '';
@@ -57,14 +57,8 @@ class HomeController extends Controller
 	 */
 	public function photos()
 	{
-		$users = \DB::table('photos')
-			->select(\DB::raw("photos.user_id, users.name"))
-			->leftJoin('users', 'users.id', '=', 'photos.user_id')
-			->where('status','active')
-			->groupBy('photos.user_id')
-			->get();
-		$tags = \App\Tag::where('status','active')->get();
-		return view('photos',['users' => $users, 'tags' => $tags]);
+		$photos = \App\Photo::approved()->orderBy('created_at','desc')->paginate(30);
+		return view('photos',['photos' => $photos]);
 	}
 
 	/**
@@ -97,9 +91,9 @@ class HomeController extends Controller
 	public function log_in()
 	{
 		$title = 'Login';
-		if(\App\Photo::where('approve','yes')->where('show_in_slider','yes')->count()>0)
+		if(\App\Photo::approved()->where('show_in_slider','yes')->count()>0)
 		{
-			$section_back_image = \App\Photo::where('approve','yes')->where('show_in_slider','yes')->inRandomOrder()->first();
+			$section_back_image = \App\Photo::approved()->where('show_in_slider','yes')->inRandomOrder()->first();
 		}
 		else{
 			$section_back_image = '';
@@ -199,5 +193,30 @@ class HomeController extends Controller
 			}
 		}
 		print_r(json_encode($all_tags));
+	}
+
+	/**
+	 * This function is used for get places for photos serach
+	 *
+	 * @param request $r
+	 * @author Parth
+	 * @version 1.0.0
+	 * @return void
+	 */
+	public function get_places(request $r)
+	{
+		$input = $r->all();
+
+		$places = \App\Photo::select("place_name")->approved()->where('place_name','like','%'.$input['places'].'%')->groupBy('photos.place_name')->get()->toArray();
+
+		$all_place = array();
+		if(count($places) > 0)
+		{
+			foreach($places as $place)
+			{
+				$all_place[] = array('value' => $place['place_name']);
+			}
+		}
+		print_r(json_encode($all_place));
 	}
 }

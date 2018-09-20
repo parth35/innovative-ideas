@@ -1,3 +1,4 @@
+	</div>
 	<footer class="text-center">
 			<p>© {{ date('Y') }} Innovative Ideas</p>
 	</footer>
