@@ -29,22 +29,8 @@
 		<hr>
 		<br>
 		@if(isset($photos) && count($photos) > 0)
-			<div class="container-fluid">
-				<div class="row">
-					@foreach($photos as $photo)
-						<div class="col-sm-6 col-md-2">
-							<a class="fancy_image" href="{{ gallery_photo_url($photo['photos']) }}" data-fancybox="gallery" data-caption="{{ 'Address - '.$photo['address'].'<br>Sent By - '.$photo->user->name }}">
-								<img src="{{ gallery_photo_url($photo['photos']) }}" height="170px" width="220px"/>
-								<p>{{ $photo['place_name'] }}</p>
-							</a>
-						</div>
-					@endforeach
-				</div>
-				<div class="text-center">
-					<nav aria-label="Page navigation example">
-						{{ $photos->links() }}
-					</nav>
-				</div>
+			<div class="container-fluid photos">
+				@include('load_photos')
 			</div>
 		@endif
 	</section>
@@ -76,7 +62,8 @@
 		],
 	});
 	/* End: Fancybox initialization for image viewer */
-
+	var tag_value = "";
+	var place_value = "";
 	$("#by_tags").autocomplete({
 		minLength: 3,
 		source: function (query, result) {
@@ -91,6 +78,10 @@
 					}));
 				}
 			});
+		},
+		select: function (event, ui) {
+			tag_value = ui.item.value;
+			getPhotos("{{ base_url().'/photos' }}",tag_value,place_value);
 		}
 	});
 	$("#by_place").autocomplete({
@@ -107,7 +98,31 @@
 					}));
 				}
 			});
+		},
+		select: function (event, ui) {
+			place_value = ui.item.value;
+			getPhotos("{{ base_url().'/photos' }}",tag_value,place_value);
 		}
 	});
+
+	/* Start: Load ajax on click on pagination or update the filters */
+	$('body').on('click', '.pagination a', function(e) {
+		e.preventDefault();
+		var url = $(this).attr('href');
+		getPhotos(url,tag_value,place_value);
+		window.history.pushState("", "", url);
+	});
+
+	function getPhotos(url,tags,place) {
+		$.ajax({
+			url : url,
+			data: { tags: tags, place: place, _token: "{{ csrf_token() }}" },
+		}).done(function (data) {
+			$('.photos').html(data);
+		}).fail(function () {
+			console.log('Photos could not be loaded.');
+		});
+	}
+	/* End: Load ajax on click on pagination or update the filters */
 </script>
 @endpush

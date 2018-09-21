@@ -149,7 +149,7 @@ footer {
 /* Start: Login Page */
 	.login-page{
 		width: 100%;
-		min-height: 95vh;
+		min-height: 100vh;
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: -moz-box;

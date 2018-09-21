@@ -55,10 +55,27 @@ class HomeController extends Controller
 	 * @version 1.0.0
 	 * @return view 'photos'
 	 */
-	public function photos()
+	public function photos(request $r)
 	{
-		$photos = \App\Photo::approved()->orderBy('created_at','desc')->paginate(30);
-		return view('photos',['photos' => $photos]);
+		$input = $r->all();
+		$query = \App\Photo::approved()->orderBy('created_at','desc');
+		
+		/* Start: Check for filters */
+		if(isset($input['place']) && !empty($input['place']))
+		{
+			$query->where('place_name',$input['place']);
+		}
+		if(isset($input['tags']) && !empty($input['tags']))
+		{
+			// $query->where('place_name',$input['place']);
+		}
+		/* End: Check for filters */
+		$photos = $query->paginate(3);
+		
+		if ($r->ajax()) {
+			return view('load_photos', ['photos' => $photos])->render();  
+		}
+		return view('photos', compact('photos'));
 	}
 
 	/**
