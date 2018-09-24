@@ -105,6 +105,20 @@
 		}
 	});
 
+	$('#by_tags').on('blur',function(){
+		if($(this).val().length == 0)
+		{
+			getPhotos("{{ base_url().'/photos' }}","",place_value);
+		}
+	})
+
+	$('#by_place').on('blur',function(){
+		if($(this).val().length == 0)
+		{
+			getPhotos("{{ base_url().'/photos' }}",tag_value,"");
+		}
+	})
+
 	/* Start: Load ajax on click on pagination or update the filters */
 	$('body').on('click', '.pagination a', function(e) {
 		e.preventDefault();

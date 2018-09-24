@@ -67,13 +67,13 @@ class HomeController extends Controller
 		}
 		if(isset($input['tags']) && !empty($input['tags']))
 		{
-			// $query->where('place_name',$input['place']);
+			// $query->where('tags',$input['tags']);
 		}
 		/* End: Check for filters */
-		$photos = $query->paginate(3);
+		$photos = $query->paginate(30);
 		
 		if ($r->ajax()) {
-			return view('load_photos', ['photos' => $photos])->render();  
+			return view('load_photos', ['photos' => $photos])->render();
 		}
 		return view('photos', compact('photos'));
 	}
