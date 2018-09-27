@@ -22,4 +22,9 @@ class Photo extends Model
     {
         return $query->where('approve','yes');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag','photos_tags','photo_id','tag_id');
+    }
 }

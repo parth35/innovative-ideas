@@ -80,7 +80,7 @@
 			});
 		},
 		select: function (event, ui) {
-			tag_value = ui.item.value;
+			tag_value = ui.item.data;
 			getPhotos("{{ base_url().'/photos' }}",tag_value,place_value);
 		}
 	});

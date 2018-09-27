@@ -58,7 +58,7 @@ class HomeController extends Controller
 	public function photos(request $r)
 	{
 		$input = $r->all();
-		$query = \App\Photo::approved()->orderBy('created_at','desc');
+		$query = \App\Photo::approved()->orderBy('created_at','desc')->with('tags');
 		
 		/* Start: Check for filters */
 		if(isset($input['place']) && !empty($input['place']))
@@ -67,11 +67,11 @@ class HomeController extends Controller
 		}
 		if(isset($input['tags']) && !empty($input['tags']))
 		{
-			$query->whereIn('tags',$input['tags']);
+			$query->where('photos_tags.tag_id',$input['tags']);
 		}
 		/* End: Check for filters */
 		$photos = $query->paginate(30);
-		
+
 		if ($r->ajax()) {
 			return view('load_photos', ['photos' => $photos])->render();
 		}

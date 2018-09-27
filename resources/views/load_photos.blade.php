@@ -2,8 +2,8 @@
 		@foreach($photos as $photo)
 			<div class="col-sm-6 col-md-2">
 				<?php $tags = ""; ?>
-				@foreach(unserialize($photo['tags']) as $tag)
-					<?php $tags .= '#'.$tag.' '; ?>
+				@foreach($photo->tags as $tag)
+					<?php $tags .= '#'.$tag->name.' '; ?>
 				@endforeach
 				<a class="fancy_image" href="{{ gallery_photo_url($photo['photos']) }}" data-fancybox="gallery" data-caption="{{ 'Address - '.$photo['address'].'<br>Sent By - '.$photo->user->name.'<br>'.$tags }}">
 					<img src="{{ gallery_photo_url($photo['photos']) }}" height="170px" width="220px"/>
