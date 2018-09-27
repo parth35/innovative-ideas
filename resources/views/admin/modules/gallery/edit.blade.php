@@ -40,7 +40,7 @@
 						<div class="col-sm-10">
 							<select name="tags[]" id="tags" class="form-control" multiple data-placeholder="Select a Tags">
 								@foreach($tags as $tag)
-									<option value="{{ $tag['name'] }}" {{ (isset($photo['tags']) && in_array($tag['name'],unserialize($photo['tags'])))?'selected':'' }}>{{ $tag['name'] }}</option>
+									<option value="{{ $tag['name'] }}" {{ (isset($tags_link) && count($tags_link) > 0 && in_array($tag['id'],$tags_link))?'selected':'' }}>{{ $tag['name'] }}</option>
 								@endforeach
 							</select>
 							@if ($errors->has('tags'))

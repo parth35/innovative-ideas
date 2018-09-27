@@ -67,7 +67,7 @@ class HomeController extends Controller
 		}
 		if(isset($input['tags']) && !empty($input['tags']))
 		{
-			// $query->where('tags',$input['tags']);
+			$query->whereIn('tags',$input['tags']);
 		}
 		/* End: Check for filters */
 		$photos = $query->paginate(30);
