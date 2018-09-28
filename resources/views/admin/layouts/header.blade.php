@@ -1,8 +1,8 @@
 	<header class="main-header">
 		
 		<a href="{{ admin_url('/dashboard') }}" class="logo">
-			<span class="logo-mini"><b>I</b>deas</span>
-			<span class="logo-lg"><b>Innovative</b>Ideas</span>
+			<span class="logo-mini"><b>TH</b></span>
+			<span class="logo-lg"><b>Travel</b>History</span>
 		</a>
 		
 		<nav class="navbar navbar-static-top">

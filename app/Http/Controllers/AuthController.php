@@ -15,7 +15,7 @@ class AuthController extends Controller
 	 */
     public function login()
     {
-        $title = 'Innovative Ideas - Login';
+        $title = 'Travel History - Login';
         if(Auth::check())
         {
             $message = 'You are already logged in.';

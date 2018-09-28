@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>{{ (isset($title))?$title:'Innovative Ideas' }}</title>
+	<title>{{ (isset($title))?$title:'Travel History' }}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{ css_url('/bootstrap.min.css') }}">
@@ -20,7 +20,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ base_url() }}" title="Innovative Ideas"><strong>INNOVATIVE</strong> IDEAS</a>
+				<a class="navbar-brand" href="{{ base_url() }}" title="Travel History"><strong>TRAVEL</strong> HISTORY</a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
