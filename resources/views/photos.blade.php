@@ -108,14 +108,16 @@
 	$('#by_tags').on('blur',function(){
 		if($(this).val().length == 0)
 		{
-			getPhotos("{{ base_url().'/photos' }}","",place_value);
+			tag_value = "";
+			getPhotos("{{ base_url().'/photos' }}",tag_value,place_value);
 		}
 	})
 
 	$('#by_place').on('blur',function(){
 		if($(this).val().length == 0)
 		{
-			getPhotos("{{ base_url().'/photos' }}",tag_value,"");
+			place_value = "";
+			getPhotos("{{ base_url().'/photos' }}",tag_value,place_value);
 		}
 	})
 

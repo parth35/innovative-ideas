@@ -58,20 +58,34 @@ class HomeController extends Controller
 	public function photos(request $r)
 	{
 		$input = $r->all();
+		/* Start: Default photo list */
 		$query = \App\Photo::approved()->orderBy('created_at','desc')->with('tags');
+		/* End: Default photo list */
 		
-		/* Start: Check for filters */
-		if(isset($input['place']) && !empty($input['place']))
-		{
-			$query->where('place_name',$input['place']);
-		}
+		/* Start: Photo list after tag filter */
 		if(isset($input['tags']) && !empty($input['tags']))
 		{
-			$query->where('photos_tags.tag_id',$input['tags']);
+			$tag_link = \App\PhotosTag::select('photo_id')->where('tag_id',$input['tags'])->get()->toArray();
+			$photo_arr = array();
+			foreach($tag_link as $link)
+			{
+				$photo_arr[] = $link['photo_id'];
+			}
+			$query->whereIn('id',$photo_arr);
 		}
-		/* End: Check for filters */
-		$photos = $query->paginate(30);
+		/* End: Photo list after tag filter */
 
+		/* Start: Photo list after place filter */
+		if(isset($input['place']) && !empty($input['place'])){
+			$query->where('place_name',$input['place']);
+		}
+		/* End: Photo list after place filter */
+
+		/* Start: Photo list pagination */
+		$photos = $query->paginate(30);
+		/* End: Photo list pagination */
+		
+		/* Load page when ajax call */
 		if ($r->ajax()) {
 			return view('load_photos', ['photos' => $photos])->render();
 		}
