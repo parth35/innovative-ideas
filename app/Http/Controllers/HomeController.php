@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Socialite;
 use Auth;
+use DialogFlow\Client;
 
 class HomeController extends Controller
 {
@@ -103,7 +104,8 @@ class HomeController extends Controller
 	{
 		if(Auth::check())
 		{
-			return view('send_photo');
+			$tags = \App\Tag::where('status','active')->get();
+			return view('send_photo',compact('tags'));
 		}
 		else
 		{
@@ -250,4 +252,86 @@ class HomeController extends Controller
 		}
 		print_r(json_encode($all_place));
 	}
+
+	/**
+	 * This function is used for submit photos from front side
+	 *
+	 * @param request $r
+	 * @author Parth
+	 * @version 1.0.0
+	 * @return void
+	 */
+	public function photos_form(request $r)
+	{
+		$input = $r->all();
+
+		$validatedData = $r->validate([
+			'place_name'    => 'required|min:2|max:150',
+			'address'       => 'required|min:2|max:300',
+			'photos'        => 'required'
+		]);
+
+		if(isset($input['tags']) && !empty($input['tags']) && count($input['tags']) > 0)
+		{
+			foreach($input['tags'] as $tags)
+			{
+				$tag = \App\Tag::firstOrCreate(array('name' => $tags));
+				$tag->name = $tags;
+				$tag->save();
+			}
+		}
+
+		$message = 'Photos added successfully.';
+
+		foreach($r->file('photos') as $photos)
+		{
+			$place_name = str_replace(' ','_',strtolower($input['place_name']));
+			$input['imagename'] = $place_name.'.'.time().'.'.$photos->getClientOriginalName();
+			$destinationPath = base_path().'/public/gallery/';
+			$photos->move($destinationPath, $input['imagename']);
+
+			$photo = new \App\Photo;
+			$photo->user_id = \Auth::user()->id;
+			$photo->place_name = $input['place_name'];
+			$photo->address = $input['address'];
+			$photo->note = (isset($input['note']))?$input['note']:'';
+			$photo->photos = $input['imagename'];
+			$photo->approve = 'no';
+			$photo->save();
+
+			if(isset($input['tags']) && !empty($input['tags']) && count($input['tags']) > 0)
+			{
+				$delete_photo_link = \App\PhotosTag::where('photo_id',$photo->id)->delete();
+				foreach($input['tags'] as $tags)
+				{
+					$tag = \App\Tag::where('name',$tags)->first();
+					$tag_link = new \App\PhotosTag;
+					$tag_link->photo_id = $photo->id;
+					$tag_link->tag_id = $tag->id;
+					$tag_link->save();
+				}
+			}
+		}
+		return redirect()->back()->with('success', $message);
+	}
+
+	/*
+	public function chatbot(request $r)
+	{
+		$input = $r->all();
+		try {
+			$client = new Client('e47e67aaf10243c78086c8ccff14ae04');
+		
+			$query = $client->get('query', [
+				'query' => 'hi',
+				'sessionId' => time()
+			]);
+		
+			$response = json_decode((string) $query->getBody(), true);
+		} catch (\Exception $error) {
+			echo $error->getMessage();
+		}
+		echo '<pre>'; print_r($response); exit;
+	}
+	*/
 }

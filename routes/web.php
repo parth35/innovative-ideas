@@ -128,4 +128,8 @@ Route::get('/login/{service}/callback/', 'HomeController@handleProviderCallback'
 Route::post('/get_users', 'HomeController@get_users');
 Route::post('/get_tags', 'HomeController@get_tags');
 Route::post('/get_places', 'HomeController@get_places');
+Route::post('/photos_form', 'HomeController@photos_form');
+/*
+Route::post('/chatbot', 'HomeController@chatbot');
+*/
 /* End: Front Routes */

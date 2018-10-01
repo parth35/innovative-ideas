@@ -91,7 +91,7 @@ class AdminGalleryController extends Controller
 			]);
 		}
 
-		if(isset($input['tags']))
+		if(isset($input['tags']) && !empty($input['tags']) && count($input['tags']) > 0)
 		{
 			foreach($input['tags'] as $tags)
 			{
@@ -162,7 +162,7 @@ class AdminGalleryController extends Controller
 			$photo->approve = 'no';
 			$photo->save();
 
-			if(isset($input['tags']))
+			if(isset($input['tags']) && !empty($input['tags']) && count($input['tags']) > 0)
 			{
 				$delete_photo_link = \App\PhotosTag::where('photo_id',$input['id'])->delete();
 				foreach($input['tags'] as $tags)

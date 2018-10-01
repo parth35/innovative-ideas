@@ -77,6 +77,8 @@
 			},
 			errorPlacement: function(error, element) {
 				error.insertAfter($(element));
+			},
+			highlight: function(element, errorClass, validClass) {
 				$(element).parents('div.form-group').addClass('has-error');
 			},
 			unhighlight: function(element, errorClass, validClass){

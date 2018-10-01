@@ -10,7 +10,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<form action="/action_page.php">
+				<form>
 					<div class="form-group row">
 						<div class="form-group">
 							<div class="col-xs-2">
